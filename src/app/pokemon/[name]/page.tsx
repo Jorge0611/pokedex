@@ -1,4 +1,4 @@
-import { pokemonSchema } from "@/app/pokemon/[id]/schema";
+import { pokemonSchema } from "@/app/pokemon/[name]/schema";
 import Image from "next/image";
 
 async function getPokemonByName(name: string) {
@@ -11,10 +11,10 @@ export default async function Page({
   params,
 }: {
   params: {
-    id: string;
+    name: string;
   };
 }) {
-  const pokemon = await getPokemonByName(params.id);
+  const pokemon = await getPokemonByName(params.name);
 
   return (
     <div className="container mx-auto flex flex-col items-center space-x-8">
@@ -22,7 +22,7 @@ export default async function Page({
 
       <Image
         src={pokemon.sprites.other.dream_world.front_default}
-        alt={params.id}
+        alt={params.name}
         width={512}
         height={512}
       />
